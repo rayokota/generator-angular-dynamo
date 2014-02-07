@@ -1,0 +1,10 @@
+.DS_Store
+*.swp
+*~
+/ebin
+/deps
+/tmp/dev
+/tmp/test
+/_build
+erl_crash.dump
+node_modules
