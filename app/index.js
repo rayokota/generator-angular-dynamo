@@ -34,10 +34,24 @@ AngularDynamoGenerator.prototype.askFor = function askFor() {
     name: 'baseName',
     message: 'What is the name of your application?',
     default: 'myapp'
+  },
+  {
+    type: 'input',
+    name: 'username',
+    message: 'What is the PostgreSQL username?',
+    default: 'postgres'
+  },
+  {
+    type: 'input',
+    name: 'password',
+    message: 'What is the PostgreSQL password?',
+    default: 'postgres'
   }];
 
   this.prompt(prompts, function (props) {
     this.baseName = props.baseName;
+    this.username = props.username;
+    this.password = props.password;
 
     cb();
   }.bind(this));
@@ -49,6 +63,8 @@ AngularDynamoGenerator.prototype.app = function app() {
   this.resources = [];
   this.generatorConfig = {
     "baseName": this.baseName,
+    "username": this.username,
+    "password": this.password,
     "entities": this.entities,
     "resources": this.resources
   };

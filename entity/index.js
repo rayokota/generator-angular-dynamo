@@ -170,6 +170,8 @@ EntityGenerator.prototype.askFor = function askFor() {
 EntityGenerator.prototype.files = function files() {
 
   this.baseName = this.generatorConfig.baseName;
+  this.username = this.generatorConfig.username;
+  this.password = this.generatorConfig.password;
   this.entities = this.generatorConfig.entities;
   this.entities = _.reject(this.entities, function (entity) { return entity.name === this.name; }.bind(this));
   this.entities.push({ name: this.name, attrs: this.attrs});
