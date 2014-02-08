@@ -45,7 +45,7 @@ AngularDynamoGenerator.prototype.askFor = function askFor() {
     type: 'input',
     name: 'password',
     message: 'What is the PostgreSQL password?',
-    default: 'postgres'
+    default: ''
   }];
 
   this.prompt(prompts, function (props) {
