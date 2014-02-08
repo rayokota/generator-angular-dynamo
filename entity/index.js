@@ -13,6 +13,10 @@ var EntityGenerator = module.exports = function EntityGenerator(args, options, c
 
   console.log('You called the entity subgenerator with the argument ' + this.name + '.');
 
+  this.on('end', function () {
+    return this.spawnCommand('mix', ['ecto:migrate', 'Repo']);
+  });
+
   fs.readFile('generator.json', 'utf8', function (err, data) {
     if (err) {
       console.log('Error: ' + err);
