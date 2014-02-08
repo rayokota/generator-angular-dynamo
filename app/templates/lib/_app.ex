@@ -40,7 +40,6 @@ end
 defmodule Repo do
   use Ecto.Repo, adapter: Ecto.Adapters.Postgres
 
-  # url ecto://username:password@hostname/database
   def url, do: "ecto://<%= username %><% if (password) { %>:<%= password %><% }; %>@localhost/dynamo_db"
 
   def priv do
