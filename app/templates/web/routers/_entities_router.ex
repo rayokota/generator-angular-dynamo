@@ -8,7 +8,7 @@ defmodule <%= _.capitalize(pluralize(name)) %>Router do
   get "/:id" do
     <%= name %> = Repo.get(<%= _.capitalize(name) %>, id)
     if <%= name %> do
-      conn.resp 200, ExJSON.generate [<% _.each(attrs, function (attr) { %><%= attr.attrName %>: <%= name %>.<%= attr.attrName %>, <% }); %>id: <%= name %>.id]
+      conn.resp 200, ExJSON.generate <%= name %>.__entity__(:keywords)
     else 
       conn.resp 404, ""
     end
@@ -21,7 +21,7 @@ defmodule <%= _.capitalize(pluralize(name)) %>Router do
       <% var delim = ''; _.each(attrs, function (attr) { %><%= delim %><%= attr.attrName %>: json["<%= attr.attrName %>"]<% delim = ', '; }); %>
     )
     <%= name %> = Repo.create(<%= name %>)
-    conn.resp 201, ExJSON.generate [<% _.each(attrs, function (attr) { %><%= attr.attrName %>: <%= name %>.<%= attr.attrName %>, <% }); %>id: <%= name %>.id]
+    conn.resp 201, ExJSON.generate <%= name %>.__entity__(:keywords)
   end
 
   put "/:id" do
@@ -31,7 +31,7 @@ defmodule <%= _.capitalize(pluralize(name)) %>Router do
     if <%= name %> do
       <%= name %> = <%= name %>.update(json)
       Repo.update(<%= name %>)
-      conn.resp 200, ExJSON.generate [<% _.each(attrs, function (attr) { %><%= attr.attrName %>: <%= name %>.<%= attr.attrName %>, <% }); %>id: <%= name %>.id]
+      conn.resp 200, ExJSON.generate <%= name %>.__entity__(:keywords)
     else 
       conn.resp 404, ""
     end

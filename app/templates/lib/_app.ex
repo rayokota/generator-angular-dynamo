@@ -62,7 +62,7 @@ defmodule <%= _.capitalize(entity.name) %>Queries do
   import Ecto.Query
 
   def all do
-    Enum.map(_all, fn(x) -> [<% _.each(entity.attrs, function (attr) { %><%= attr.attrName %>: x.<%= attr.attrName %>, <% }); %>id: x.id] end)
+    Enum.map(_all, fn(x) -> x.__entity__(:keywords) end)
   end
 
   defp _all do
