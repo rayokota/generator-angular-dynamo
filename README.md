@@ -26,6 +26,10 @@ Get dependencies:
 
     mix deps.get
 
+Build the service:
+
+    mix compile
+    
 Run the service:
 
     mix server

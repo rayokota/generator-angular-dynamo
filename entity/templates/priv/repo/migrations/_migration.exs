@@ -4,7 +4,7 @@ defmodule Repo.Migrations.Create<%= _.capitalize(pluralize(name)) %> do
   def up do
     "CREATE TABLE <%= pluralize(name) %>(
       <% _.each(attrs, function (attr) { %>
-      <%= attr.attrName %> <%= attr.attrImplType %><% if (attr.attrType == 'Enum' || attr.attrType == 'String') { if (attr.maxLength) { %>(<%= attr.maxLength %>)<% } else { %>(255)<% }} %>, <%}); %>
+      <%= attr.attrName %> <%= attr.attrImplType %><% if (attr.attrType == 'Enum' || attr.attrType == 'String' || attr.attrType == 'Date') { if (attr.maxLength) { %>(<%= attr.maxLength %>)<% } else { %>(255)<% }} %>, <%}); %>
       id SERIAL
      )"
   end

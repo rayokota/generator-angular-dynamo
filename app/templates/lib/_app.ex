@@ -53,7 +53,7 @@ defmodule <%= _.capitalize(entity.name) %> do
 
   queryable "<%= pluralize(entity.name) %>" do
     <% _.each(entity.attrs, function (attr) { %>
-    field :<%= attr.attrName %>, :<% if (attr.attrType == 'Enum') { %>string<% } else { %><%= attr.attrType.toLowerCase() %><% }}); %>
+    field :<%= attr.attrName %>, :<% if (attr.attrType == 'Enum' || attr.attrType == 'Date') { %>string<% } else { %><%= attr.attrType.toLowerCase() %><% }}); %>
   end
 end
 

@@ -43,9 +43,7 @@ EntityGenerator.prototype.askFor = function askFor() {
     type: 'list',
     name: 'attrType',
     message: 'What is the type of the attribute?',
-    //choices: ['String', 'Integer', 'Float', 'Boolean', 'Date', 'Enum'],
-    // TODO: wait for proper :date support in Ecto
-    choices: ['String', 'Integer', 'Float', 'Boolean', 'Enum'],
+    choices: ['String', 'Integer', 'Float', 'Boolean', 'Date', 'Enum'],
     default: 'String'
   },
   {
@@ -141,7 +139,8 @@ EntityGenerator.prototype.askFor = function askFor() {
     } else if (attrType === 'Boolean') {
       attrImplType = 'BOOLEAN';
     } else if (attrType === 'Date') {
-      attrImplType = 'DATE';
+      //attrImplType = 'DATE';
+      attrImplType = 'VARCHAR';
     } else if (attrType === 'Enum') {
       attrImplType = 'VARCHAR';
     }
