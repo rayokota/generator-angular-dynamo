@@ -8,7 +8,7 @@
     "Dynamo",
     "Ecto",
     "AngularJS",
-    "Twitter Bootstrap"
+    "Bootstrap"
   ],
   "homepage": "https://github.com/rayokota/generator-angular-dynamo",
   "bugs": "https://github.com/rayokota/generator-angular-dynamo/issues",
