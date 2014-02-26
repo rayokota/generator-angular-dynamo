@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-dynamo",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A Yeoman generator for AngularJS + Dynamo",
   "keywords": [
     "yeoman-generator",
@@ -8,7 +8,7 @@
     "Dynamo",
     "Ecto",
     "AngularJS",
-    "Twitter Bootstrap"
+    "Bootstrap"
   ],
   "homepage": "https://github.com/rayokota/generator-angular-dynamo",
   "bugs": "https://github.com/rayokota/generator-angular-dynamo/issues",
