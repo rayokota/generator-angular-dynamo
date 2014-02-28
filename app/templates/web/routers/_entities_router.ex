@@ -41,7 +41,7 @@ defmodule <%= _.capitalize(pluralize(name)) %>Router do
     <%= name %> = Repo.get(<%= _.capitalize(name) %>, id)
     if <%= name %> do
       Repo.delete(<%= name %>)
-      conn.resp 200, ""
+      conn.resp 204, ""
     else 
       conn.resp 404, ""
     end
