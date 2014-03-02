@@ -16,6 +16,8 @@ Install the Angular-Dynamo generator:
 
     npm install -g generator-angular-dynamo
 
+The above prerequisites can be installed to a VM using the [Angular-Dynamo provisioner](https://github.com/rayokota/provision-angular-dynamo).
+
 ## Creating a Dynamo service
 
 In a new directory, generate the service:
