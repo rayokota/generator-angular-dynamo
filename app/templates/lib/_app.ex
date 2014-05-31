@@ -40,7 +40,9 @@ end
 defmodule Repo do
   use Ecto.Repo, adapter: Ecto.Adapters.Postgres
 
-  def url, do: "ecto://<%= username %><% if (password) { %>:<%= password %><% }; %>@localhost/dynamo_db"
+  def conf do 
+    parse_url "ecto://<%= username %><% if (password) { %>:<%= password %><% }; %>@localhost/dynamo_db"
+  end
 
   def priv do
     app_dir(:<%= baseName %>, "priv/repo")
@@ -51,7 +53,7 @@ end
 defmodule <%= _.capitalize(entity.name) %> do
   use Ecto.Model
 
-  queryable "<%= pluralize(entity.name) %>" do
+  schema "<%= pluralize(entity.name) %>" do
     <% _.each(entity.attrs, function (attr) { %>
     field :<%= attr.attrName %>, :<% if (attr.attrType == 'Enum' || attr.attrType == 'Date') { %>string<% } else { %><%= attr.attrType.toLowerCase() %><% }}); %>
   end
@@ -61,7 +63,7 @@ defmodule <%= _.capitalize(entity.name) %>Queries do
   import Ecto.Query
 
   def all do
-    Enum.map(_all, fn(x) -> x.__entity__(:keywords) end)
+    Enum.map(_all, fn(x) -> x.__struct__.__schema__(:keywords, x) end)
   end
 
   defp _all do

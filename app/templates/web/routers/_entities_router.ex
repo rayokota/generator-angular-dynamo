@@ -8,7 +8,7 @@ defmodule <%= _.capitalize(pluralize(name)) %>Router do
   get "/:id" do
     <%= name %> = Repo.get(<%= _.capitalize(name) %>, id)
     if <%= name %> do
-      conn.resp 200, ExJSON.generate <%= name %>.__entity__(:keywords)
+      conn.resp 200, ExJSON.generate <%= name %>.__struct__.__schema__(:keywords, <%= name %>)
     else 
       conn.resp 404, ""
     end
@@ -16,22 +16,22 @@ defmodule <%= _.capitalize(pluralize(name)) %>Router do
 
   post "/" do
     conn = conn.fetch :body
-    json = ExJSON.parse conn.req_body
-    <%= name %> = <%= _.capitalize(name) %>.new(
+    json = ExJSON.parse(conn.req_body, :to_map)
+    <%= name %> = %<%= _.capitalize(name) %>{
       <% var delim = ''; _.each(attrs, function (attr) { %><%= delim %><%= attr.attrName %>: json["<%= attr.attrName %>"]<% delim = ', '; }); %>
-    )
-    <%= name %> = Repo.create(<%= name %>)
-    conn.resp 201, ExJSON.generate <%= name %>.__entity__(:keywords)
+    }
+    <%= name %> = Repo.insert(<%= name %>)
+    conn.resp 201, ExJSON.generate <%= name %>.__struct__.__schema__(:keywords, <%= name %>)
   end
 
   put "/:id" do
     conn = conn.fetch :body
-    json = ExJSON.parse conn.req_body
+    json = ExJSON.parse(conn.req_body, :to_map)
     <%= name %> = Repo.get(<%= _.capitalize(name) %>, id)
     if <%= name %> do
-      <%= name %> = <%= name %>.update(json)
+      <%= name %> = %{<%= name %> | <% var delim = ''; _.each(attrs, function (attr) { %><%= delim %><%= attr.attrName %>: json["<%= attr.attrName %>"]<% delim = ', '; }); %>}
       Repo.update(<%= name %>)
-      conn.resp 200, ExJSON.generate <%= name %>.__entity__(:keywords)
+      conn.resp 200, ExJSON.generate <%= name %>.__struct__.__schema__(:keywords, <%= name %>)
     else 
       conn.resp 404, ""
     end

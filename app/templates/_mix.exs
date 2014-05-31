@@ -20,8 +20,8 @@ defmodule <%= _.capitalize(baseName) %>.Mixfile do
   defp deps do
     [ { :cowboy, github: "extend/cowboy" },
       { :dynamo, "~> 0.1.0-dev", github: "elixir-lang/dynamo" },
-      { :postgrex, github: "ericmj/postgrex" },
-      { :ecto, github: "elixir-lang/ecto"},
+      { :postgrex, ">= 0.0.0", github: "ericmj/postgrex" },
+      { :ecto, "~> 0.2.0", github: "elixir-lang/ecto"},
       { :exjson, github: "guedes/exjson"}]
   end
 end
