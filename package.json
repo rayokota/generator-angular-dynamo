@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-dynamo",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A Yeoman generator for AngularJS + Dynamo",
   "keywords": [
     "yeoman-generator",
